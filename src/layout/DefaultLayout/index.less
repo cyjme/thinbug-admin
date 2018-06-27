@@ -1,0 +1,40 @@
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.flex-row{
+  display:flex;
+  flex-direction: row;
+}
+
+.default-layout-page {
+  .sider {
+    color: white;
+    min-height: 90vh;
+    .logo {
+      line-height: 64px;
+      text-align: center;
+      font-size: 28px;
+    }
+  }
+  .header{
+    padding:30px;
+    .flex-row;
+    justify-content: space-between;
+    align-items: center;
+    .header-nav {
+      .flex-row;
+      li{
+        padding:10px;
+        &:nth-child(n+3){
+          span{
+            &:nth-child(n+2){
+              margin-left:10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
