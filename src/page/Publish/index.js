@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LzEditor from './editor/index.jsx'
+import LzEditor from 'react-lz-editor'
 export default class Publish extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       htmlContent: `<h1>Yankees, Peeking at the Red Sox, Will Soon Get an Eyeful</h1>
                 <p>Whenever Girardi stole a glance, there was rarely any good news for the Yankees. While Girardi’s charges were clawing their way to a split of their four-game series against the formidable Indians, the Boston Red Sox were plowing past the rebuilding Chicago White Sox, sweeping four games at Fenway Park.</p>`,
-      markdownContent: "## HEAD 2 \n markdown examples \n ``` welcome ```"
+      markdownContent: "## HEAD 2 \n markdown examples \n ``` welcome ```",
       responseList: []
     }
     this.receiveHtml=this.receiveHtml.bind(this);
