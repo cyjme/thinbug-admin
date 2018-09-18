@@ -22,7 +22,8 @@ class Service extends Component {
                     <span>{item.team}</span>
                     <span>{item.number}</span>
                 </li>
-            )
+            );
+            return true;
         });
         return (
             <div className="service-page">

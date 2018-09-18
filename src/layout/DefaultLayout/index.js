@@ -53,6 +53,18 @@ class DefaultLayout extends Component {
                                     <span>发布文章</span>
                                 </Link>
                             </MenuItem>
+                            <MenuItem key='5'>
+                                <Link to="/articles">
+                                    <Icon type="customer-service"/>
+                                    <span>文章列表</span>
+                                </Link>
+                            </MenuItem>
+                            <MenuItem key='6'>
+                                <Link to="/group">
+                                    <Icon type="customer-service"/>
+                                    <span>分组</span>
+                                </Link>
+                            </MenuItem>
                         </Menu>
                     </Sider>
                     <Layout>

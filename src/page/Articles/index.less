@@ -1,0 +1,50 @@
+.articles-page {
+  margin: 32px;
+  padding: 20px;
+  background: white;
+  .articles-header {
+    font-size: 26px;
+    color: black;
+  }
+  .articles-list {
+    li {
+      border: 1px solid #eeeeee;
+      padding: 5px;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      .content {
+        .title, .brief {
+          display: block;
+        }
+        .name, .time {
+          font-size: 14px;
+        }
+        .title {
+          color: #323232;
+          font-size: 20px;
+          margin: 10px 0;
+
+        }
+        .brief {
+          margin-bottom: 5px;
+        }
+        .name {
+          display: inline-block;
+          width: 150px;
+          margin-right: 20px;
+        }
+        .time {
+          color:#b9b9b9;
+        }
+      }
+      .btn {
+        button {
+          margin: 10px;
+        }
+      }
+    }
+  }
+}

@@ -1,53 +1,58 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import LzEditor from 'react-lz-editor'
-export default class Publish extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      htmlContent: `<h1>Yankees, Peeking at the Red Sox, Will Soon Get an Eyeful</h1>
-                <p>Whenever Girardi stole a glance, there was rarely any good news for the Yankees. While Girardi’s charges were clawing their way to a split of their four-game series against the formidable Indians, the Boston Red Sox were plowing past the rebuilding Chicago White Sox, sweeping four games at Fenway Park.</p>`,
-      markdownContent: "## HEAD 2 \n markdown examples \n ``` welcome ```",
-      responseList: []
-    }
-    this.receiveHtml=this.receiveHtml.bind(this);
-  }
-  receiveHtml(content) {
-    console.log("recieved HTML content", content);
-    this.setState({responseList:[]});
-  }
-  render() {
-    let policy = "";
-    const uploadProps = {
-      action: "http://v0.api.upyun.com/devopee",
-      onChange: this.onChange,
-      listType: 'picture',
-      fileList: this.state.responseList,
-      data: (file) => {
+import {Button} from 'antd';
+import './index.less';
 
-      },
-      multiple: true,
-      beforeUpload: this.beforeUpload,
-      showUploadList: true
+export default class Publish extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            markdownContent: "## 标题 2 \n 开始发表文章... ",
+            responseList: [],
+            content:"",
+        };
+        this.receiveMarkdown = this.receiveMarkdown.bind(this);
     }
-    return (
-      <div>
-        <div>Editor demo 1 (use default html format ):
-        </div>
-        <LzEditor active={true} importContent={this.state.htmlContent} cbReceiver={this.receiveHtml} uploadProps={uploadProps}
-        lang="en"/>
-        <br/>
-        <div>Editor demo 2 (use markdown format ):
-        </div>
-        <LzEditor
-          active={true}
-          importContent={this.state.markdownContent}
-          cbReceiver={this.receiveMarkdown}
-          image={false}
-          video={false}
-          audio={false}
-          convertFormat="markdown"/>
-      </div>
-    );
-  }
+
+    receiveMarkdown(content) {
+        console.log("recieved markdown content", content);
+        this.setState({
+            content:content
+        })
+        this.setState({responseList:[]});
+    }
+
+    holdClick() {
+        console.log("hold state.markdownContent", this.state.content)
+    }
+
+    publishClick() {
+        console.log('publish',this.state.content)
+    }
+
+    render() {
+        return (
+            <div className='publish-page'>
+                <div className="header">
+                    <span className="title"> 发表文章</span>
+                    <div className="btn">
+                        <Button className='hold-btn' onClick={() => {
+                            this.holdClick()
+                        }}>保存</Button>
+                        <Button type='primary' onClick={()=>{this.publishClick()}}>发布</Button>
+                    </div>
+                </div>
+                <div className='editor-box'>
+                    <LzEditor
+                        active={true}
+                        importContent={this.state.markdownContent}
+                        cbReceiver={this.receiveMarkdown}
+                        image={false}
+                        video={false}
+                        audio={false}
+                        convertFormat="markdown"/>
+                </div>
+            </div>
+        );
+    }
 }

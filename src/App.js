@@ -10,6 +10,8 @@ import DefaultLayout from './layout/DefaultLayout';
 import Service from "./page/Service";
 import TeamList from "./page/TeamList";
 import Publish from "./page/Publish";
+import Articles from "./page/Articles";
+import Group from "./page/Group";
 
 const bugsnagClient = bugsnag('4968ceaa1c751e37413b1f4b45e7b2b2');
 const ErrorBoundary = bugsnagClient.use(createPlugin(React));
@@ -31,16 +33,20 @@ class App extends Component {
                             <Route path="/teamlist"
                                    render={props => <DefaultLayout><TeamList {...props}/></DefaultLayout>}/>
                             <Route path="/publish"
-                                   render={props=><DefaultLayout><Publish {...props}/></DefaultLayout>}/>
+                                   render={props => <DefaultLayout><Publish {...props}/></DefaultLayout>}/>
+                            <Route path='/articles'
+                                   render={props => <DefaultLayout><Articles {...props}/></DefaultLayout>}/>
+                            <Route path='/group'
+                                   render={props => <DefaultLayout><Group {...props}/></DefaultLayout>}/>
                         </div>
                     </Router>
                 </Provider>
             </ErrorBoundary>
-        );
+    );
     }
-}
+    }
 
-export default App;
+    export default App;
 
 
 
